@@ -17,7 +17,14 @@ export const UserPosts = ({ posts = [] }) => {
     <div>
       <ul>{postLinks}</ul>
       <div>
-        {/* TODO: Display <UserPost /> if there is a :postId in the url, otherwise display "No post selected..." */}
+        <Switch>
+          <Route exact path={`${url}/:postId`}>
+            <UserPost posts={posts} />
+          </Route>
+          <Route path={url}>
+            <p>No post selected...</p>
+          </Route>
+        </Switch>
       </div>
     </div>
   );
